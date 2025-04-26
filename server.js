@@ -13,10 +13,12 @@ app.use(cors());
 // API Routes
 app.use('/api/students', studentRoutes);
 
-const PORT = process.env.PORT || 4000;
-
+const PORT = process.env.PORT || 10000;
+const HOST = process.env.HOST || '0.0.0.0';
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    app.listen(PORT, HOST, () => {
+  console.log(Server running on http://${HOST}:${PORT});
+});
   })
   .catch((err) => console.log(err));
